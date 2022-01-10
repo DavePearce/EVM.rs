@@ -1,3 +1,5 @@
+use primitive_types::U256;
+
 // 0s: Stop and Arithmetic Operations
 pub const STOP : u8 = 0x0;
 pub const ADD : u8 = 0x01;
@@ -144,3 +146,34 @@ pub const STATICCALL : u8 = 0xfa;
 pub const REVERT : u8 = 0xfd;
 pub const INVALID : u8 = 0xfe;
 pub const SELFDESTRUCT : u8 = 0xff;
+
+// ===========================================
+// State
+// ===========================================
+
+pub struct State {
+    pc : U256,
+    code : [u8;16]
+}
+
+// ===========================================
+// Exec
+// ===========================================
+
+pub fn execute(state : State) {
+    let pc = state.pc;
+    let opcode = state.code[U256::as_usize(&pc)];
+    //
+    match opcode {
+	PUSH1 => {
+	    push(state,1);
+	}
+	_ => {
+	    
+	}
+    }
+}
+
+fn push(state : State, n : u32) {
+    
+}
